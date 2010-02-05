@@ -12,8 +12,8 @@
 /* Urban Airship Constants */
 #ifdef DEBUG
 //Dev
-#define kApplicationKey @"xmTd7LAYRSqEJ83lAYwXyQ"
-#define kApplicationSecret @"PLGH3mrmTxyWiPebp5xYpQ"
+#define kApplicationKey @"<Dev Key>"
+#define kApplicationSecret @"<Dev Secret>"
 #define kApplicationMasterSecret @"<Dev Master Secret Needed for Batch Mode"
 #else
 //Prod
