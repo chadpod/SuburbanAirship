@@ -1,0 +1,402 @@
+// !$*UTF8*$!
+{
+	1D3623240D0F684500981E51 /* SuburbanAirshipAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1189, 653}}";
+			sepNavSelRange = "{781, 0}";
+			sepNavVisRange = "{0, 789}";
+		};
+	};
+	1D3623250D0F684500981E51 /* SuburbanAirshipAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1189, 1859}}";
+			sepNavSelRange = "{2240, 0}";
+			sepNavVisRange = "{1206, 2390}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* SuburbanAirship */ = {
+		activeExec = 0;
+		executables = (
+			63D26D8710FD91C30056F4F0 /* SuburbanAirship */,
+		);
+	};
+	28D7ACF60DDB3853001CB0EB /* SuburbanAirshipViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1189, 679}}";
+			sepNavSelRange = "{690, 0}";
+			sepNavVisRange = "{0, 697}";
+		};
+	};
+	28D7ACF70DDB3853001CB0EB /* SuburbanAirshipViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1203, 661}}";
+			sepNavSelRange = "{442, 0}";
+			sepNavVisRange = "{0, 1075}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 63D26D8710FD91C30056F4F0 /* SuburbanAirship */;
+		activeSDKPreference = iphoneos3.0;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* SuburbanAirship */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* SuburbanAirship */,
+		);
+		breakpoints = (
+		);
+		codeSenseManager = 63D26D9410FD91DC0056F4F0 /* Code sense */;
+		executables = (
+			63D26D8710FD91C30056F4F0 /* SuburbanAirship */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					1011,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					971,
+					60,
+					20,
+					48,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 285131693;
+			PBXWorkspaceStateSaveDate = 285131693;
+		};
+		perUserProjectItems = {
+			636B2CE810FECB10006BC67C /* PBXTextBookmark */ = 636B2CE810FECB10006BC67C /* PBXTextBookmark */;
+			636B2CE910FECB10006BC67C /* PBXTextBookmark */ = 636B2CE910FECB10006BC67C /* PBXTextBookmark */;
+			636B2CEA10FECB10006BC67C /* PBXTextBookmark */ = 636B2CEA10FECB10006BC67C /* PBXTextBookmark */;
+			636B2CEB10FECB10006BC67C /* PBXTextBookmark */ = 636B2CEB10FECB10006BC67C /* PBXTextBookmark */;
+			636B2CEC10FECB10006BC67C /* PBXTextBookmark */ = 636B2CEC10FECB10006BC67C /* PBXTextBookmark */;
+			636B2CED10FECB10006BC67C /* PBXTextBookmark */ = 636B2CED10FECB10006BC67C /* PBXTextBookmark */;
+			636B2CEE10FECB10006BC67C /* PlistBookmark */ = 636B2CEE10FECB10006BC67C /* PlistBookmark */;
+			636B2CEF10FECB10006BC67C /* PlistBookmark */ = 636B2CEF10FECB10006BC67C /* PlistBookmark */;
+			63D26E5A10FDA8220056F4F0 /* PBXTextBookmark */ = 63D26E5A10FDA8220056F4F0 /* PBXTextBookmark */;
+			63D26E5D10FDA8220056F4F0 /* PBXTextBookmark */ = 63D26E5D10FDA8220056F4F0 /* PBXTextBookmark */;
+			63D26E5F10FDA8220056F4F0 /* PBXTextBookmark */ = 63D26E5F10FDA8220056F4F0 /* PBXTextBookmark */;
+			63D26E6110FDA8220056F4F0 /* PBXTextBookmark */ = 63D26E6110FDA8220056F4F0 /* PBXTextBookmark */;
+			63D26E6310FDA8220056F4F0 /* PBXTextBookmark */ = 63D26E6310FDA8220056F4F0 /* PBXTextBookmark */;
+			63D26F0910FE7D8D0056F4F0 /* PBXTextBookmark */ = 63D26F0910FE7D8D0056F4F0 /* PBXTextBookmark */;
+			63D26F2310FE81920056F4F0 /* PBXTextBookmark */ = 63D26F2310FE81920056F4F0 /* PBXTextBookmark */;
+		};
+		sourceControlManager = 63D26D9310FD91DC0056F4F0 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	32CA4F630368D1EE00C91783 /* SuburbanAirship_Prefix.pch */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1189, 653}}";
+			sepNavSelRange = "{224, 0}";
+			sepNavVisRange = "{0, 522}";
+		};
+	};
+	636B2CE810FECB10006BC67C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* SuburbanAirshipViewController.m */;
+		name = "SuburbanAirshipViewController.m: 22";
+		rLen = 0;
+		rLoc = 442;
+		rType = 0;
+		vrLen = 1075;
+		vrLoc = 0;
+	};
+	636B2CE910FECB10006BC67C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 32CA4F630368D1EE00C91783 /* SuburbanAirship_Prefix.pch */;
+		name = "SuburbanAirship_Prefix.pch: 10";
+		rLen = 0;
+		rLoc = 224;
+		rType = 0;
+		vrLen = 522;
+		vrLoc = 0;
+	};
+	636B2CEA10FECB10006BC67C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* SuburbanAirshipAppDelegate.h */;
+		name = "SuburbanAirshipAppDelegate.h: 25";
+		rLen = 0;
+		rLoc = 781;
+		rType = 0;
+		vrLen = 789;
+		vrLoc = 0;
+	};
+	636B2CEB10FECB10006BC67C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 63D26DB210FD92060056F4F0 /* SuburbanAirship.m */;
+		name = "SuburbanAirship.m: 533";
+		rLen = 27;
+		rLoc = 19588;
+		rType = 0;
+		vrLen = 2812;
+		vrLoc = 16863;
+	};
+	636B2CEC10FECB10006BC67C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 63D26DB110FD92060056F4F0 /* SuburbanAirship.h */;
+		name = "SuburbanAirship.h: 99";
+		rLen = 0;
+		rLoc = 3362;
+		rType = 0;
+		vrLen = 2986;
+		vrLoc = 2263;
+	};
+	636B2CED10FECB10006BC67C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* SuburbanAirshipAppDelegate.m */;
+		name = "SuburbanAirshipAppDelegate.m: 74";
+		rLen = 0;
+		rLoc = 2240;
+		rType = 0;
+		vrLen = 2390;
+		vrLoc = 1206;
+	};
+	636B2CEE10FECB10006BC67C /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* SuburbanAirship-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/chad/Projects/Repos/Active/SuburbanAirship/SuburbanAirship-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	636B2CEF10FECB10006BC67C /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* SuburbanAirship-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/chad/Projects/Repos/Active/SuburbanAirship/SuburbanAirship-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	63D26D8710FD91C30056F4F0 /* SuburbanAirship */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = SuburbanAirship;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+			$lr = 1;
+			$pc = 1;
+			$r0 = 1;
+			$r1 = 1;
+			$r10 = 1;
+			$r11 = 1;
+			$r12 = 1;
+			$r2 = 1;
+			$r3 = 1;
+			$r4 = 1;
+			$r5 = 1;
+			$r6 = 1;
+			$r7 = 1;
+			$r8 = 1;
+			$r9 = 1;
+			$sp = 1;
+		};
+	};
+	63D26D9310FD91DC0056F4F0 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	63D26D9410FD91DC0056F4F0 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	63D26D9610FD92060056F4F0 /* ASIFormDataRequest.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1189, 803}}";
+			sepNavSelRange = "{463, 0}";
+			sepNavVisRange = "{0, 798}";
+		};
+	};
+	63D26D9910FD92060056F4F0 /* ASIHTTPRequest.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1692, 20917}}";
+			sepNavSelRange = "{1562, 31}";
+			sepNavVisRange = "{0, 1685}";
+		};
+	};
+	63D26DB110FD92060056F4F0 /* SuburbanAirship.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1189, 1833}}";
+			sepNavSelRange = "{3362, 0}";
+			sepNavVisRange = "{2263, 2986}";
+		};
+	};
+	63D26DB210FD92060056F4F0 /* SuburbanAirship.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1041, 6916}}";
+			sepNavSelRange = "{19588, 27}";
+			sepNavVisRange = "{19213, 464}";
+		};
+	};
+	63D26E5A10FDA8220056F4F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 63D26D9610FD92060056F4F0 /* ASIFormDataRequest.h */;
+		name = "ASIFormDataRequest.h: 23";
+		rLen = 0;
+		rLoc = 463;
+		rType = 0;
+		vrLen = 798;
+		vrLoc = 0;
+	};
+	63D26E5D10FDA8220056F4F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 63D26E5E10FDA8220056F4F0 /* UIDatePicker.h */;
+		name = "UIDatePicker.h: 21";
+		rLen = 9;
+		rLoc = 813;
+		rType = 0;
+		vrLen = 2313;
+		vrLoc = 0;
+	};
+	63D26E5E10FDA8220056F4F0 /* UIDatePicker.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = UIDatePicker.h;
+		path = /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIDatePicker.h;
+		sourceTree = "<absolute>";
+	};
+	63D26E5F10FDA8220056F4F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 63D26E6010FDA8220056F4F0 /* UIControl.h */;
+		name = "UIControl.h: 67";
+		rLen = 6;
+		rLoc = 2650;
+		rType = 0;
+		vrLen = 3257;
+		vrLoc = 1569;
+	};
+	63D26E6010FDA8220056F4F0 /* UIControl.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = UIControl.h;
+		path = /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIControl.h;
+		sourceTree = "<absolute>";
+	};
+	63D26E6110FDA8220056F4F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 63D26E6210FDA8220056F4F0 /* UIView.h */;
+		name = "UIView.h: 57";
+		rLen = 63;
+		rLoc = 1919;
+		rType = 0;
+		vrLen = 3470;
+		vrLoc = 2948;
+	};
+	63D26E6210FDA8220056F4F0 /* UIView.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = UIView.h;
+		path = /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h;
+		sourceTree = "<absolute>";
+	};
+	63D26E6310FDA8220056F4F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 63D26E6410FDA8220056F4F0 /* UITextField.h */;
+		name = "UITextField.h: 41";
+		rLen = 86;
+		rLoc = 969;
+		rType = 0;
+		vrLen = 3208;
+		vrLoc = 5119;
+	};
+	63D26E6410FDA8220056F4F0 /* UITextField.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = UITextField.h;
+		path = /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITextField.h;
+		sourceTree = "<absolute>";
+	};
+	63D26F0910FE7D8D0056F4F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF60DDB3853001CB0EB /* SuburbanAirshipViewController.h */;
+		name = "SuburbanAirshipViewController.h: 27";
+		rLen = 0;
+		rLoc = 690;
+		rType = 0;
+		vrLen = 697;
+		vrLoc = 0;
+	};
+	63D26F2310FE81920056F4F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 63D26D9910FD92060056F4F0 /* ASIHTTPRequest.m */;
+		name = "ASIHTTPRequest.m: 41";
+		rLen = 31;
+		rLoc = 1562;
+		rType = 0;
+		vrLen = 1685;
+		vrLoc = 0;
+	};
+	8D1107310486CEB800E47090 /* SuburbanAirship-Info.plist */ = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{0, 4}, {1920, 1174}}";
+		};
+	};
+}
