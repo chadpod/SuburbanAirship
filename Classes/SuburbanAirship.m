@@ -35,10 +35,14 @@
  POSSIBILITY OF SUCH DAMAGE.
  */
 
+// TODO: Persist notifDict so user does not have to track aliases if they don't want to
+
+#import <SystemConfiguration/SystemConfiguration.h>
 #import "SuburbanAirship.h"
 #import "ASIHTTPRequest.h"
 #import "CJSONSerializer.h"
 #import "CJSONDeserializer.h"
+#import "Reachability.h"
 
 @implementation SuburbanAirshipNotification
 
@@ -79,9 +83,10 @@
 
 @interface SuburbanAirship ()
 
-@property (nonatomic, retain) NSString *deviceToken;
-@property (nonatomic, retain) NSString *deviceAlias;
-@property (nonatomic, retain) NSMutableArray *deviceTags;
+@property (nonatomic, readwrite, retain) NSString *_deviceToken;
+@property (nonatomic, readwrite, retain) NSString *deviceToken;
+@property (nonatomic, readwrite, retain) NSString *deviceAlias;
+@property (nonatomic, readwrite, retain) NSMutableArray *deviceTags;
 @property (nonatomic, retain) NSMutableArray *requestQueue;
 @property (nonatomic, retain) NSMutableDictionary *notifDict;
 @property (nonatomic, retain) NSOperationQueue *operationQueue;
@@ -104,7 +109,9 @@
 @implementation SuburbanAirship
 
 @synthesize delegate;
-@synthesize batchMode;
+@synthesize batchModePush;
+@synthesize batchModeCancel;
+@synthesize _deviceToken;
 @synthesize deviceToken;
 @synthesize deviceAlias;
 @synthesize deviceTags;
@@ -115,11 +122,12 @@
 @synthesize notifDict;
 @synthesize operationQueue;
 
+static NSString *SABaseURL = @"go.urbanairship.com";
 static NSString *SADeviceTokenURL = @"https://go.urbanairship.com/api/device_tokens/";
 static NSString *SAPushURL = @"https://go.urbanairship.com/api/push/";
 static NSString *SAScheduledAliasURL = @"https://go.urbanairship.com/api/push/scheduled/alias/";
 //static NSString *SABatchURL = @"https://go.urbanairship.com/api/push/batch/";
-//static NSString *SACancelURL = @"https://go.urbanairship.com/api/push/scheduled/";
+static NSString *SACancelURL = @"https://go.urbanairship.com/api/push/scheduled/";
 
 static NSString *SAUserInfoScheduledAliasKey = @"SAUserInfoScheduledAlias";
 
@@ -132,6 +140,7 @@ static NSString *SAJSONBadgeKey = @"badge";
 static NSString *SAJSONAlertKey = @"alert";
 static NSString *SAJSONSoundKey = @"sound";
 static NSString *SAJSONAliasKey = @"alias";
+static NSString *SAJSONCancelAliasesKey = @"cancel_aliases";
 static NSString *SAJSONTagsKey = @"tags";
 //static NSString *SAJSONScheduledURLKey = @"scheduled_notifications";
 //static NSString *SAJSONCancelURLKey = @"cancel";
@@ -147,7 +156,8 @@ static NSString *SAJSONTagsKey = @"tags";
 	
 	if ((self = [super init]) != nil) {
 		delegate = [theDelegate retain];
-		batchMode = NO;
+		batchModePush = NO;
+		batchModeCancel = YES;
 		
 		appKey = [key retain];
 		appSecret = [secret retain];
@@ -202,12 +212,12 @@ static NSString *SAJSONTagsKey = @"tags";
 - (void)putDeviceToken:(NSData *)token withDeviceAlias:(NSString *)alias withDeviceTags:(NSArray *)tags; {
 	
 	/* Get a hex string from the device token with no spaces or < > */
-	self.deviceToken = [[[[token description] stringByReplacingOccurrencesOfString:@"<"withString:@""] 
-						 stringByReplacingOccurrencesOfString:@">" withString:@""] 
-						stringByReplacingOccurrencesOfString: @" " withString: @""];
+	self._deviceToken = [[[[token description] stringByReplacingOccurrencesOfString:@"<"withString:@""] 
+						  stringByReplacingOccurrencesOfString:@">" withString:@""] 
+						 stringByReplacingOccurrencesOfString: @" " withString: @""];
 	
 	/* Build the ASIHTTPRequest */
-	NSString *urlString = [NSString stringWithFormat:@"%@%@/", SADeviceTokenURL, self.deviceToken];
+	NSString *urlString = [NSString stringWithFormat:@"%@%@/", SADeviceTokenURL, self._deviceToken];
 	NSURL *url = [NSURL URLWithString:urlString];
 	ASIHTTPRequest *request = [[[ASIHTTPRequest alloc] initWithURL:url] autorelease];
 	request.requestMethod = @"PUT";
@@ -244,6 +254,7 @@ static NSString *SAJSONTagsKey = @"tags";
 }
 
 - (void)deleteDeviceToken; {
+	DLog(@"Delete device token");
 	/* Build the ASIHTTPRequest */
 	NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@/", SADeviceTokenURL, self.deviceToken]];
 	ASIHTTPRequest *request = [[[ASIHTTPRequest alloc] initWithURL:url] autorelease];
@@ -258,12 +269,19 @@ static NSString *SAJSONTagsKey = @"tags";
 
 - (void)saTokenSucceeded:(ASIHTTPRequest *)request; {
 	DLog(@"Token Succeeded");
+	self.deviceToken = _deviceToken;
 	[delegate tokenSucceeded];
 }
 
 - (void)saTokenFailed:(ASIHTTPRequest *)request; {
-	DLog(@"Token Failed");	
-	[delegate tokenFailed];
+	if ([[request error] code] == ASIRequestCancelledErrorType) {
+		DLog(@"Token Canceled");	
+		[delegate tokenCanceled];
+	}
+	else {
+		DLog(@"Token Failed");	
+		[delegate tokenFailed];
+	}	
 }
 
 
@@ -350,8 +368,14 @@ static NSString *SAJSONTagsKey = @"tags";
 }
 
 - (void)saPushFailed:(ASIHTTPRequest *) request; {
-	DLog(@"Push Failed with Alias = %@", [[request userInfo] objectForKey:SAUserInfoScheduledAliasKey]);	
-	[delegate pushFailed:[[request userInfo] objectForKey:SAUserInfoScheduledAliasKey]];
+	if ([[request error] code] == ASIRequestCancelledErrorType) {
+		DLog(@"Push Cancelled with Alias = %@", [[request userInfo] objectForKey:SAUserInfoScheduledAliasKey]);	
+		[delegate pushCanceled:[[request userInfo] objectForKey:SAUserInfoScheduledAliasKey]];
+	}
+	else {
+		DLog(@"Push Failed with Alias = %@", [[request userInfo] objectForKey:SAUserInfoScheduledAliasKey]);	
+		[delegate pushFailed:[[request userInfo] objectForKey:SAUserInfoScheduledAliasKey]];
+	}
 }
 
 
@@ -368,38 +392,35 @@ static NSString *SAJSONTagsKey = @"tags";
 	
 	if (aliases != nil && [aliases count] != 0) {
 		
-		//
-		// Removed batch mode for canceling because I moved to using aliases instead
-		// of cancel urls.  When UA adds batch cancelling via alias, this should be an easy addition
-		//
-//		if (batchMode) {
-//			ASIHTTPRequest *request = [[[ASIHTTPRequest alloc] 
-//								initWithURL:[NSURL URLWithString:SACancelURL]] autorelease];
-//			request.requestMethod = @"POST";
-//			request.username = kApplicationKey;
-//			request.password = kApplicationMasterSecret;
-//			[request setDelegate:self];
-//			[request setDidFinishSelector: @selector(saCancelSucceeded:)];
-//			[request setDidFailSelector: @selector(saCancelFailed:)];
-//			
-//			NSDictionary *jsonDict = [NSDictionary dictionaryWithObject:urls forKey:SAJSONCancelURLKey];
-//			[request addRequestHeader: @"Content-Type" value: @"application/json"];			
-//			[request appendPostData:
-//			 [[[CJSONSerializer serializer] serializeDictionary:jsonDict] dataUsingEncoding:NSUTF8StringEncoding]];
-//			
-//			DLog(@"Cancel %@", [[CJSONSerializer serializer] serializeDictionary:jsonDict]);
-//			
-//			/* Process request using an NSOperationQueue */
-//			[operationQueue addOperation:request];				
-//		}
-//		else {
+		if (batchModeCancel) {
+			ASIHTTPRequest *request = [[[ASIHTTPRequest alloc] 
+								initWithURL:[NSURL URLWithString:SACancelURL]] autorelease];
+			request.requestMethod = @"POST";
+			request.username = self.appKey;
+			request.password = self.appSecret;
+			request.userInfo = [NSDictionary dictionaryWithObject:aliases forKey:SAUserInfoScheduledAliasKey];
+			[request setDelegate:self];
+			[request setDidFinishSelector: @selector(saCancelSucceeded:)];
+			[request setDidFailSelector: @selector(saCancelFailed:)];
+			
+			NSDictionary *jsonDict = [NSDictionary dictionaryWithObject:aliases forKey:SAJSONCancelAliasesKey];
+			[request addRequestHeader: @"Content-Type" value: @"application/json"];			
+			[request appendPostData:
+			 [[[CJSONSerializer serializer] serializeDictionary:jsonDict] dataUsingEncoding:NSUTF8StringEncoding]];
+			
+			DLog(@"Cancel Aliases %@", [[CJSONSerializer serializer] serializeDictionary:jsonDict]);
+			
+			/* Process request using an NSOperationQueue */
+			[operationQueue addOperation:request];				
+		}
+		else {
 			for (NSString *alias in aliases) {
 				ASIHTTPRequest *request = [[[ASIHTTPRequest alloc] 
 								initWithURL:[NSURL URLWithString:[SAScheduledAliasURL stringByAppendingString:alias]]] autorelease];
 				request.requestMethod = @"DELETE";
 				request.username = self.appKey;
 				request.password = self.appSecret;
-				request.userInfo = [NSDictionary dictionaryWithObject:alias forKey:SAUserInfoScheduledAliasKey];
+				request.userInfo = [NSDictionary dictionaryWithObject:[NSArray arrayWithObject:alias] forKey:SAUserInfoScheduledAliasKey];
 				[request setDelegate:self];
 				[request setDidFinishSelector: @selector(saCancelSucceeded:)];
 				[request setDidFailSelector: @selector(saCancelFailed:)];
@@ -409,11 +430,10 @@ static NSString *SAJSONTagsKey = @"tags";
 				/* Process request using an NSOperationQueue */
 				[operationQueue addOperation:request];		
 			}
-//		}
+		}
 
 	}
 }
-
 
 - (void)saCancelSucceeded:(ASIHTTPRequest *) request; {
 	DLog(@"Cancel Succeeded with Alias = %@", [[request userInfo] objectForKey:SAUserInfoScheduledAliasKey]);
@@ -421,8 +441,14 @@ static NSString *SAJSONTagsKey = @"tags";
 }
 
 - (void)saCancelFailed:(ASIHTTPRequest *) request; {
-	DLog(@"Cancel Failed with Alias = %@", [[request userInfo] objectForKey:SAUserInfoScheduledAliasKey]);	
-	[delegate cancelFailed:[[request userInfo] objectForKey:SAUserInfoScheduledAliasKey]];
+	if ([[request error] code] == ASIRequestCancelledErrorType) {
+		DLog(@"Cancel Canceled with Alias = %@", [[request userInfo] objectForKey:SAUserInfoScheduledAliasKey]);	
+		[delegate cancelCanceled:[[request userInfo] objectForKey:SAUserInfoScheduledAliasKey]];
+	}
+	else {
+		DLog(@"Cancel Failed with Alias = %@", [[request userInfo] objectForKey:SAUserInfoScheduledAliasKey]);	
+		[delegate cancelFailed:[[request userInfo] objectForKey:SAUserInfoScheduledAliasKey]];
+	}
 }
 
 
@@ -437,7 +463,7 @@ static NSString *SAJSONTagsKey = @"tags";
 		// Removed batch mode for sending because json payload does not support passing in 
 		// scheduled notif aliases yet.  When UA adds alias to this payload, this should be an easy addition
 		//
-//		if (batchMode) {
+//		if (batchModePush) {
 //			/* Create a bulk Push request and configure its properties */
 //			ASIHTTPRequest *request = [[[ASIHTTPRequest alloc] 
 //										initWithURL:[NSURL URLWithString:SABatchURL]] autorelease];
@@ -478,7 +504,7 @@ static NSString *SAJSONTagsKey = @"tags";
 	request.requestMethod = @"POST";
 	request.username = self.appKey;
 	request.password = self.appSecret;
-	request.userInfo = [NSDictionary dictionaryWithObject:notif.alias forKey:SAUserInfoScheduledAliasKey];
+	request.userInfo = [NSDictionary dictionaryWithObject:[NSArray arrayWithObject:notif.alias] forKey:SAUserInfoScheduledAliasKey];
 	[request setDelegate:self];
 	[request setDidFinishSelector: @selector(saPushSucceeded:)];
 	[request setDidFailSelector: @selector(saPushFailed:)];
@@ -516,6 +542,7 @@ static NSString *SAJSONTagsKey = @"tags";
 	if (notif.date != nil) {
 		/* Set up a dateformater for ISO 8601 Format in UTC */
 		NSDateFormatter *df = [[[NSDateFormatter alloc] init] autorelease];
+		[df setLocale:[[[NSLocale alloc] initWithLocaleIdentifier: @"en_US"] autorelease]]; 
 		[df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
 		[df setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
 
@@ -533,5 +560,11 @@ static NSString *SAJSONTagsKey = @"tags";
 - (SuburbanAirshipNotification *)suburbanAirshipNotifForGUID:(NSString *)guid; {
 	return [notifDict objectForKey:guid];
 }
+
+- (BOOL)isUrbanAirshipReachable;
+{
+	return ([[Reachability reachabilityWithHostName:SABaseURL] currentReachabilityStatus] != NotReachable);
+}
+
 
 @end

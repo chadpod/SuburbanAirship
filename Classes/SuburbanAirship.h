@@ -42,11 +42,14 @@
 @protocol SuburbanAirshipDelegate
 
 - (void)tokenSucceeded;
+- (void)tokenCanceled;
 - (void)tokenFailed;
-- (void)pushSucceeded:(NSString *)alias;
-- (void)pushFailed:(NSString *)alias;
-- (void)cancelSucceeded:(NSString *)alias;
-- (void)cancelFailed:(NSString *)alias;
+- (void)pushSucceeded:(NSArray *)aliases;
+- (void)pushCanceled:(NSArray *)aliases;
+- (void)pushFailed:(NSArray *)aliases;
+- (void)cancelSucceeded:(NSArray *)aliases;
+- (void)cancelCanceled:(NSArray *)aliases;
+- (void)cancelFailed:(NSArray *)aliases;
 
 @end
 
@@ -76,9 +79,11 @@
 @interface SuburbanAirship : NSObject {
 
 	id delegate;
-	BOOL batchMode;						// Currently just batch send. Add batch cancel via alias when available
+	BOOL batchModePush;					// Defaults to NO
+	BOOL batchModeCancel;				// Defaults to YES
 	
 	NSString *deviceToken;
+	NSString *_deviceToken;
 	NSString *deviceAlias;
 	NSMutableArray  *deviceTags;
 	
@@ -93,10 +98,14 @@
 }
 
 @property (nonatomic, retain) id delegate;
+@property (nonatomic, readonly, retain) NSString *deviceToken;
+@property (nonatomic, readonly, retain) NSString *deviceAlias;
+@property (nonatomic, readonly, retain) NSMutableArray *deviceTags;
 @property (nonatomic, retain) NSString *appKey;
 @property (nonatomic, retain) NSString *appSecret;
 @property (nonatomic, retain) NSString *appMaster;
-@property BOOL batchMode;
+@property BOOL batchModePush;
+@property BOOL batchModeCancel;
 
 - (id)initWithDelegate:(id)theDelegate key:(NSString*)key secret:(NSString *)secret master:(NSString *)master;
 
@@ -105,7 +114,6 @@
 - (void)putDeviceToken:(NSData *)token withDeviceAlias:(NSString *)alias;
 - (void)putDeviceToken:(NSData *)token withDeviceAlias:(NSString *)alias withDeviceTags:(NSArray *)tags;
 - (void)deleteDeviceToken;
-
 
 #pragma Push Notifications Method
 - (NSString *)pushAlert:(NSString *)alert;
@@ -129,12 +137,12 @@
 - (void)cancelNotificationWithAlias:(NSString *)alias;
 - (void)cancelNotificationsWithAliases:(NSArray *)aliases;
 
-
 #pragma Process Pending Notifications Method
 - (void)sendNotificationsInQueue;
 
 #pragma mark Misc Methods
 - (SuburbanAirshipNotification *)suburbanAirshipNotifForGUID:(NSString *)guid;
+- (BOOL)isUrbanAirshipReachable;
 
 @end
 

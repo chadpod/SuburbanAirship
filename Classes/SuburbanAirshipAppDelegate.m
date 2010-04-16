@@ -131,23 +131,23 @@
 
 #pragma mark -
 #pragma mark Push Responses
-- (void)pushSucceeded:(NSString *)alias; {
-	DLog(@"Push Succeeded for alias %@", alias);
+- (void)pushSucceeded:(NSArray *)aliases; {
+	DLog(@"Push Succeeded for alias %@", aliases);
 }
 
-- (void)pushFailed:(NSString *)alias {
-	DLog(@"Push Failed for alias %@", alias);
+- (void)pushFailed:(NSArray *)aliases {
+	DLog(@"Push Failed for alias %@", aliases);
 }
 
 
 #pragma mark -
 #pragma mark Cancel Responses
-- (void)cancelSucceeded:(NSString *)alias; {	
-	DLog(@"Cancel Succeeded for alias %@", alias);
+- (void)cancelSucceeded:(NSArray *)aliases; {	
+	DLog(@"Cancel Succeeded for alias %@", aliases);
 }
 	
-- (void)cancelFailed:(NSString *)alias; {
-	DLog(@"Cancel Failed for alias %@", alias);
+- (void)cancelFailed:(NSArray *)aliases; {
+	DLog(@"Cancel Failed for alias %@", aliases);
 }
 
 @end

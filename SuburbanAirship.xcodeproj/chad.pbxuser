@@ -2,16 +2,16 @@
 {
 	1D3623240D0F684500981E51 /* SuburbanAirshipAppDelegate.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1189, 653}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1189, 984}}";
 			sepNavSelRange = "{781, 0}";
 			sepNavVisRange = "{0, 789}";
 		};
 	};
 	1D3623250D0F684500981E51 /* SuburbanAirshipAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1189, 1859}}";
-			sepNavSelRange = "{2240, 0}";
-			sepNavVisRange = "{1206, 2390}";
+			sepNavIntBoundsRect = "{{0, 0}, {1189, 1963}}";
+			sepNavSelRange = "{394, 0}";
+			sepNavVisRange = "{0, 1526}";
 		};
 	};
 	1D6058900D05DD3D006BFB54 /* SuburbanAirship */ = {
@@ -93,25 +93,25 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 285131693;
-			PBXWorkspaceStateSaveDate = 285131693;
+			PBXPerProjectTemplateStateSaveDate = 293074518;
+			PBXWorkspaceStateSaveDate = 293074518;
 		};
 		perUserProjectItems = {
-			636B2CE810FECB10006BC67C /* PBXTextBookmark */ = 636B2CE810FECB10006BC67C /* PBXTextBookmark */;
-			636B2CE910FECB10006BC67C /* PBXTextBookmark */ = 636B2CE910FECB10006BC67C /* PBXTextBookmark */;
-			636B2CEA10FECB10006BC67C /* PBXTextBookmark */ = 636B2CEA10FECB10006BC67C /* PBXTextBookmark */;
-			636B2CEB10FECB10006BC67C /* PBXTextBookmark */ = 636B2CEB10FECB10006BC67C /* PBXTextBookmark */;
-			636B2CEC10FECB10006BC67C /* PBXTextBookmark */ = 636B2CEC10FECB10006BC67C /* PBXTextBookmark */;
-			636B2CED10FECB10006BC67C /* PBXTextBookmark */ = 636B2CED10FECB10006BC67C /* PBXTextBookmark */;
-			636B2CEE10FECB10006BC67C /* PlistBookmark */ = 636B2CEE10FECB10006BC67C /* PlistBookmark */;
-			636B2CEF10FECB10006BC67C /* PlistBookmark */ = 636B2CEF10FECB10006BC67C /* PlistBookmark */;
-			63D26E5A10FDA8220056F4F0 /* PBXTextBookmark */ = 63D26E5A10FDA8220056F4F0 /* PBXTextBookmark */;
-			63D26E5D10FDA8220056F4F0 /* PBXTextBookmark */ = 63D26E5D10FDA8220056F4F0 /* PBXTextBookmark */;
-			63D26E5F10FDA8220056F4F0 /* PBXTextBookmark */ = 63D26E5F10FDA8220056F4F0 /* PBXTextBookmark */;
-			63D26E6110FDA8220056F4F0 /* PBXTextBookmark */ = 63D26E6110FDA8220056F4F0 /* PBXTextBookmark */;
-			63D26E6310FDA8220056F4F0 /* PBXTextBookmark */ = 63D26E6310FDA8220056F4F0 /* PBXTextBookmark */;
-			63D26F0910FE7D8D0056F4F0 /* PBXTextBookmark */ = 63D26F0910FE7D8D0056F4F0 /* PBXTextBookmark */;
-			63D26F2310FE81920056F4F0 /* PBXTextBookmark */ = 63D26F2310FE81920056F4F0 /* PBXTextBookmark */;
+			636B2CE810FECB10006BC67C = 636B2CE810FECB10006BC67C /* PBXTextBookmark */;
+			636B2CE910FECB10006BC67C = 636B2CE910FECB10006BC67C /* PBXTextBookmark */;
+			63A33C6E1177DD92009C6685 = 63A33C6E1177DD92009C6685 /* PlistBookmark */;
+			63A33C6F1177DD92009C6685 = 63A33C6F1177DD92009C6685 /* PBXTextBookmark */;
+			63A33C701177DD92009C6685 = 63A33C701177DD92009C6685 /* PBXTextBookmark */;
+			63A33C711177DD92009C6685 = 63A33C711177DD92009C6685 /* PBXTextBookmark */;
+			63A33C721177DD92009C6685 = 63A33C721177DD92009C6685 /* PBXTextBookmark */;
+			63A33C7A1177F568009C6685 = 63A33C7A1177F568009C6685 /* PBXBookmark */;
+			63A33C7B1177F568009C6685 = 63A33C7B1177F568009C6685 /* PBXBookmark */;
+			63D26E5D10FDA8220056F4F0 = 63D26E5D10FDA8220056F4F0 /* PBXTextBookmark */;
+			63D26E5F10FDA8220056F4F0 = 63D26E5F10FDA8220056F4F0 /* PBXTextBookmark */;
+			63D26E6110FDA8220056F4F0 = 63D26E6110FDA8220056F4F0 /* PBXTextBookmark */;
+			63D26E6310FDA8220056F4F0 = 63D26E6310FDA8220056F4F0 /* PBXTextBookmark */;
+			63D26F0910FE7D8D0056F4F0 = 63D26F0910FE7D8D0056F4F0 /* PBXTextBookmark */;
+			63D26F2310FE81920056F4F0 = 63D26F2310FE81920056F4F0 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 63D26D9310FD91DC0056F4F0 /* Source Control */;
 		userBuildSettings = {
@@ -144,7 +144,18 @@
 		vrLen = 522;
 		vrLoc = 0;
 	};
-	636B2CEA10FECB10006BC67C /* PBXTextBookmark */ = {
+	63A33C6E1177DD92009C6685 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* SuburbanAirship-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/chad/Developer/Repos/Active/SuburbanAirship/SuburbanAirship-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775808;
+	};
+	63A33C6F1177DD92009C6685 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 1D3623240D0F684500981E51 /* SuburbanAirshipAppDelegate.h */;
 		name = "SuburbanAirshipAppDelegate.h: 25";
@@ -154,57 +165,43 @@
 		vrLen = 789;
 		vrLoc = 0;
 	};
-	636B2CEB10FECB10006BC67C /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 63D26DB210FD92060056F4F0 /* SuburbanAirship.m */;
-		name = "SuburbanAirship.m: 533";
-		rLen = 27;
-		rLoc = 19588;
-		rType = 0;
-		vrLen = 2812;
-		vrLoc = 16863;
-	};
-	636B2CEC10FECB10006BC67C /* PBXTextBookmark */ = {
+	63A33C701177DD92009C6685 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 63D26DB110FD92060056F4F0 /* SuburbanAirship.h */;
-		name = "SuburbanAirship.h: 99";
+		name = "SuburbanAirship.h: 149";
 		rLen = 0;
-		rLoc = 3362;
+		rLoc = 5640;
 		rType = 0;
-		vrLen = 2986;
-		vrLoc = 2263;
+		vrLen = 2728;
+		vrLoc = 0;
 	};
-	636B2CED10FECB10006BC67C /* PBXTextBookmark */ = {
+	63A33C711177DD92009C6685 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 63D26DB210FD92060056F4F0 /* SuburbanAirship.m */;
+		name = "SuburbanAirship.m: 35";
+		rLen = 0;
+		rLoc = 1692;
+		rType = 0;
+		vrLen = 2759;
+		vrLoc = 0;
+	};
+	63A33C721177DD92009C6685 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 1D3623250D0F684500981E51 /* SuburbanAirshipAppDelegate.m */;
-		name = "SuburbanAirshipAppDelegate.m: 74";
+		name = "SuburbanAirshipAppDelegate.m: 16";
 		rLen = 0;
-		rLoc = 2240;
+		rLoc = 394;
 		rType = 0;
-		vrLen = 2390;
-		vrLoc = 1206;
+		vrLen = 1526;
+		vrLoc = 0;
 	};
-	636B2CEE10FECB10006BC67C /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = 8D1107310486CEB800E47090 /* SuburbanAirship-Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-		);
-		name = "/Users/chad/Projects/Repos/Active/SuburbanAirship/SuburbanAirship-Info.plist";
-		rLen = 0;
-		rLoc = 9223372036854775807;
+	63A33C7A1177F568009C6685 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 636B2CD010FEC9D2006BC67C /* icon.png */;
 	};
-	636B2CEF10FECB10006BC67C /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = 8D1107310486CEB800E47090 /* SuburbanAirship-Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-		);
-		name = "/Users/chad/Projects/Repos/Active/SuburbanAirship/SuburbanAirship-Info.plist";
-		rLen = 0;
-		rLoc = 9223372036854775807;
+	63A33C7B1177F568009C6685 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 636B2CD010FEC9D2006BC67C /* icon.png */;
 	};
 	63D26D8710FD91C30056F4F0 /* SuburbanAirship */ = {
 		isa = PBXExecutable;
@@ -213,7 +210,7 @@
 		argumentStrings = (
 		);
 		autoAttachOnCrash = 1;
-		breakpointsEnabled = 1;
+		breakpointsEnabled = 0;
 		configStateDict = {
 		};
 		customDataFormattersEnabled = 1;
@@ -268,43 +265,27 @@
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
 	};
-	63D26D9610FD92060056F4F0 /* ASIFormDataRequest.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1189, 803}}";
-			sepNavSelRange = "{463, 0}";
-			sepNavVisRange = "{0, 798}";
-		};
-	};
 	63D26D9910FD92060056F4F0 /* ASIHTTPRequest.m */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1692, 20917}}";
-			sepNavSelRange = "{1562, 31}";
-			sepNavVisRange = "{0, 1685}";
-		};
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.objc;
+		name = ASIHTTPRequest.m;
+		path = /Users/chad/Developer/Repos/Active/SuburbanAirship/Classes/ASI/ASIHTTPRequest.m;
+		sourceTree = "<absolute>";
 	};
 	63D26DB110FD92060056F4F0 /* SuburbanAirship.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1189, 1833}}";
-			sepNavSelRange = "{3362, 0}";
-			sepNavVisRange = "{2263, 2986}";
+			sepNavIntBoundsRect = "{{0, 0}, {1189, 1937}}";
+			sepNavSelRange = "{5640, 0}";
+			sepNavVisRange = "{0, 2728}";
 		};
 	};
 	63D26DB210FD92060056F4F0 /* SuburbanAirship.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1041, 6916}}";
-			sepNavSelRange = "{19588, 27}";
-			sepNavVisRange = "{19213, 464}";
+			sepNavIntBoundsRect = "{{0, 0}, {1544, 7436}}";
+			sepNavSelRange = "{1952, 0}";
+			sepNavVisRange = "{0, 2304}";
 		};
-	};
-	63D26E5A10FDA8220056F4F0 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 63D26D9610FD92060056F4F0 /* ASIFormDataRequest.h */;
-		name = "ASIFormDataRequest.h: 23";
-		rLen = 0;
-		rLoc = 463;
-		rType = 0;
-		vrLen = 798;
-		vrLoc = 0;
 	};
 	63D26E5D10FDA8220056F4F0 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
