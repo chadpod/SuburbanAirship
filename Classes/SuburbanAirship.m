@@ -141,6 +141,7 @@ static NSString *SAJSONAlertKey = @"alert";
 static NSString *SAJSONSoundKey = @"sound";
 static NSString *SAJSONAliasKey = @"alias";
 static NSString *SAJSONCancelAliasesKey = @"cancel_aliases";
+static NSString *SAJSONCancelTokenKey = @"cancel_device_tokens";
 static NSString *SAJSONTagsKey = @"tags";
 //static NSString *SAJSONScheduledURLKey = @"scheduled_notifications";
 //static NSString *SAJSONCancelURLKey = @"cancel";
@@ -164,6 +165,7 @@ static NSString *SAJSONTagsKey = @"tags";
 		appMaster = [master retain];
 		
 		requestQueue = [[NSMutableArray alloc] init];
+		notifDict = [[NSMutableDictionary alloc] init];
 		operationQueue = [[NSOperationQueue alloc] init];
 		
 	}
@@ -179,6 +181,7 @@ static NSString *SAJSONTagsKey = @"tags";
 	self.appSecret = nil;
 	self.appMaster = nil;
 	self.requestQueue = nil;
+	self.notifDict = nil;
 	self.operationQueue = nil;
 	[super dealloc];
 }
@@ -381,7 +384,30 @@ static NSString *SAJSONTagsKey = @"tags";
 
 #pragma Delete Scheduled Push Notifications Methods
 - (void)cancelAllNotifications; {
-	[self cancelNotificationsWithAliases:[self.notifDict allKeys]];
+	
+	if (self.deviceToken != nil && [self.deviceToken length] != 0) {
+		ASIHTTPRequest *request = [[[ASIHTTPRequest alloc] 
+									initWithURL:[NSURL URLWithString:SACancelURL]] autorelease];
+		request.requestMethod = @"POST";
+		request.username = self.appKey;
+		request.password = self.appSecret;
+		request.userInfo = [NSDictionary dictionaryWithObject:[self.notifDict allKeys] 
+													   forKey:SAUserInfoScheduledAliasKey];
+		[request setDelegate:self];
+		[request setDidFinishSelector: @selector(saCancelSucceeded:)];
+		[request setDidFailSelector: @selector(saCancelFailed:)];
+		
+		NSDictionary *jsonDict = [NSDictionary dictionaryWithObject:[NSArray arrayWithObject:self.deviceToken] 
+															 forKey:SAJSONCancelTokenKey];
+		[request addRequestHeader: @"Content-Type" value: @"application/json"];			
+		[request appendPostData:
+		 [[[CJSONSerializer serializer] serializeDictionary:jsonDict] dataUsingEncoding:NSUTF8StringEncoding]];
+		
+		DLog(@"Cancel Device Token %@ and Aliases %@", self.deviceToken, [self.notifDict allKeys]);
+		
+		/* Process request using an NSOperationQueue */
+		[operationQueue addOperation:request];
+	}
 }
 
 - (void)cancelNotificationWithAlias:(NSString *)alias; {
