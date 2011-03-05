@@ -52,6 +52,7 @@
 @synthesize date;
 @synthesize alias;
 @synthesize queued;
+@synthesize userAliases;
 
 + (id)alert:(NSString *)theAlert sound:(NSString *)theSound	badge:(NSNumber *)theBadge date:(NSDate *)theDate  alias:(NSString *)theAlias queued:(BOOL)theQueued; {
 	
@@ -63,6 +64,7 @@
 	notif.date = theDate;
 	notif.alias = theAlias;
 	notif.queued = theQueued;
+    notif.userAliases = [NSArray array];
 
 	return notif;	
 }
@@ -77,6 +79,16 @@
 		return NO;
 	}
 
+}
+
+- (void)dealloc {
+    [alert release], alert = nil;
+    [sound release], sound = nil;
+    [badge release], badge = nil;
+    [date release], date = nil;
+    [alias release], alias = nil;
+    [userAliases release], userAliases = nil;
+    [super dealloc];
 }
 
 @end
@@ -145,7 +157,7 @@ static NSString *SAJSONCancelTokenKey = @"cancel_device_tokens";
 static NSString *SAJSONTagsKey = @"tags";
 //static NSString *SAJSONScheduledURLKey = @"scheduled_notifications";
 //static NSString *SAJSONCancelURLKey = @"cancel";
-//static NSString *SAJSONTokenAliasesKey = @"aliases";
+static NSString *SAJSONTokenAliasesKey = @"aliases";
 //static NSString *SAJSONExcludeTokensKey = @"exclude_tokens";
 
 
@@ -529,7 +541,7 @@ static NSString *SAJSONTagsKey = @"tags";
 								initWithURL:[NSURL URLWithString:SAPushURL]] autorelease];
 	request.requestMethod = @"POST";
 	request.username = self.appKey;
-	request.password = self.appSecret;
+	request.password = [notif.userAliases count] ? self.appMaster : self.appSecret;
 	request.userInfo = [NSDictionary dictionaryWithObject:[NSArray arrayWithObject:notif.alias] forKey:SAUserInfoScheduledAliasKey];
 	[request setDelegate:self];
 	[request setDidFinishSelector: @selector(saPushSucceeded:)];
@@ -561,8 +573,12 @@ static NSString *SAJSONTagsKey = @"tags";
 	if (notif.badge != nil) {
 		[apsDict setObject:notif.badge forKey:SAJSONBadgeKey];
 	}
-	
-	[jsonDict setObject:[NSArray arrayWithObject:self.deviceToken] forKey:SAJSONDeviceTokenKey];
+
+	if ([notif.userAliases count]) {
+        [jsonDict setObject:notif.userAliases forKey:SAJSONTokenAliasesKey];        
+    } else {
+        [jsonDict setObject:[NSArray arrayWithObject:self.deviceToken] forKey:SAJSONDeviceTokenKey];
+    }
 	[jsonDict setObject:apsDict forKey:SAJSONAPSKey];
 	
 	if (notif.date != nil) {
