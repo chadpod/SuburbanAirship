@@ -53,6 +53,7 @@
 @synthesize alias;
 @synthesize queued;
 @synthesize userAliases;
+@synthesize customData;
 
 + (id)alert:(NSString *)theAlert sound:(NSString *)theSound	badge:(NSNumber *)theBadge date:(NSDate *)theDate  alias:(NSString *)theAlias queued:(BOOL)theQueued; {
 	
@@ -65,6 +66,7 @@
 	notif.alias = theAlias;
 	notif.queued = theQueued;
     notif.userAliases = [NSArray array];
+    notif.customData = [NSDictionary dictionary];
 
 	return notif;	
 }
@@ -88,6 +90,7 @@
     [date release], date = nil;
     [alias release], alias = nil;
     [userAliases release], userAliases = nil;
+    [customData release], customData = nil;
     [super dealloc];
 }
 
@@ -593,6 +596,10 @@ static NSString *SAJSONTokenAliasesKey = @"aliases";
 									  notif.alias, SAJSONScheduledAliasKey, nil];
 		[jsonDict setObject:[NSArray arrayWithObject:scheduleDict] forKey:SAJSONScheduleForKey];	
 	}
+    
+    if ([notif.customData count]) {
+        [jsonDict addEntriesFromDictionary:notif.customData];
+    }
 	
 	return jsonDict;
 }
