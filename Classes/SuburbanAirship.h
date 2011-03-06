@@ -62,6 +62,7 @@
 	NSString *alias;	
 	BOOL	 queued;
     NSArray  *userAliases;
+    NSDictionary *customData;
 }
 
 @property (nonatomic, retain) NSString *alert;
@@ -71,6 +72,7 @@
 @property (nonatomic, retain) NSString *alias;
 @property BOOL queued;
 @property (nonatomic, retain) NSArray *userAliases;
+@property (nonatomic, retain) NSDictionary *customData;
 
 + (id)alert:(NSString *)theAlert sound:(NSString *)theSound	badge:(NSNumber *)theBadge date:(NSDate *)theDate  alias:(NSString *)theAlias queued:(BOOL)theQueued;
 
