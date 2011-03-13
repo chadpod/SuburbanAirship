@@ -113,13 +113,13 @@
 
 - (id)initWithDelegate:(id)theDelegate key:(NSString*)key secret:(NSString *)secret master:(NSString *)master;
 
-#pragma Registration Method
+#pragma mark Registration Method
 - (void)putDeviceToken:(NSData *)token;
 - (void)putDeviceToken:(NSData *)token withDeviceAlias:(NSString *)alias;
 - (void)putDeviceToken:(NSData *)token withDeviceAlias:(NSString *)alias withDeviceTags:(NSArray *)tags;
 - (void)deleteDeviceToken;
 
-#pragma Push Notifications Method
+#pragma mark Push Notifications Method
 - (NSString *)pushAlert:(NSString *)alert;
 - (NSString *)pushAlert:(NSString *)alert sound:(NSString *)sound;
 - (NSString *)pushAlert:(NSString *)alert sound:(NSString *)sound badge:(NSNumber *)badge;
@@ -136,12 +136,12 @@
 
 - (NSString *)pushSuburbanAirshipNotification:(SuburbanAirshipNotification *)notif;
 
-#pragma Delete Scheduled Push Notifications Methods
+#pragma mark Delete Scheduled Push Notifications Methods
 - (void)cancelAllNotifications;
 - (void)cancelNotificationWithAlias:(NSString *)alias;
 - (void)cancelNotificationsWithAliases:(NSArray *)aliases;
 
-#pragma Process Pending Notifications Method
+#pragma mark Process Pending Notifications Method
 - (void)sendNotificationsInQueue;
 
 #pragma mark Misc Methods
