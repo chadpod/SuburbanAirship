@@ -182,7 +182,7 @@
 	NSEnumerator *e = [[self postData] keyEnumerator];
 	NSString *key;
 	NSUInteger i=0;
-	while (key = [e nextObject]) {
+	while ((key = [e nextObject])) {
 		[self appendPostString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n",key]];
 		[self appendPostString:[[self postData] objectForKey:key]];
 		i++;
@@ -194,7 +194,7 @@
 	// Adds files to upload
 	e = [fileData keyEnumerator];
 	i=0;
-	while (key = [e nextObject]) {
+	while ((key = [e nextObject])) {
 		NSDictionary *fileInfo = [[self fileData] objectForKey:key];
 		id file = [fileInfo objectForKey:@"data"];
 		NSString *contentType = [fileInfo objectForKey:@"contentType"];
@@ -246,7 +246,7 @@
 	NSString *key;
 	int i=0;
 	int count = [[self postData] count]-1;
-	while (key = [e nextObject]) {
+	while ((key = [e nextObject])) {
         NSString *data = [NSString stringWithFormat:@"%@=%@%@", [self encodeURL:key], [self encodeURL:[[self postData] objectForKey:key]],(i<count ?  @"&" : @"")]; 
 		[self appendPostString:data];
 		i++;
