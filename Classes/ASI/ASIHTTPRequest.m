@@ -427,11 +427,29 @@ static BOOL isiPhoneOS2;
 	[[self cancelledLock] unlock];
 }
 
+- (id)delegate
+{
+    id result = nil;
+	[[self cancelledLock] lock];
+	result = delegate;
+	[[self cancelledLock] unlock];
+    return result;
+}
+
 - (void)setQueue:(id)newQueue
 {
 	[[self cancelledLock] lock];
 	queue = newQueue;
 	[[self cancelledLock] unlock];
+}
+
+- (id)queue
+{
+    id result = nil;
+	[[self cancelledLock] lock];
+	result = queue;
+	[[self cancelledLock] unlock];
+    return result;
 }
 
 #pragma mark get information about this request
@@ -1291,6 +1309,15 @@ static BOOL isiPhoneOS2;
 	[[self cancelledLock] unlock];
 }
 
+- (id)uploadProgressDelegate
+{
+    id result = nil;
+	[[self cancelledLock] lock];
+	result = uploadProgressDelegate;
+	[[self cancelledLock] unlock];
+    return result;
+}
+
 - (void)setDownloadProgressDelegate:(id)newDelegate
 {
 	[[self cancelledLock] lock];
@@ -1310,6 +1337,15 @@ static BOOL isiPhoneOS2;
 	}	
 #endif
 	[[self cancelledLock] unlock];
+}
+
+- (id)downloadProgressDelegate
+{
+    id result = nil;
+	[[self cancelledLock] lock];
+	result = downloadProgressDelegate;
+	[[self cancelledLock] unlock];
+    return result;
 }
 
 
@@ -3550,11 +3586,7 @@ static BOOL isiPhoneOS2;
 			// Yes, put this request to sleep until a second is up, with extra added punishment sleeping time for being very naughty (we have used more bandwidth than we were allowed)
 			double extraSleepyTime = (-bytesRemaining/(maxBandwidthPerSecond*1.0));
 			[throttleWakeUpTime release];
-			#if TARGET_OS_IPHONE || !defined(MAC_OS_X_VERSION_10_6) || MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_6
-			throttleWakeUpTime = [[bandwidthMeasurementDate addTimeInterval:extraSleepyTime] retain];
-			#else
 			throttleWakeUpTime = [[bandwidthMeasurementDate dateByAddingTimeInterval:extraSleepyTime] retain];
-			#endif
 		}
 	}
 	[bandwidthThrottlingLock unlock];
@@ -3697,8 +3729,6 @@ static BOOL isiPhoneOS2;
 @synthesize proxyDomain;
 @synthesize url;
 @synthesize originalURL;
-@synthesize delegate;
-@synthesize queue;
 @synthesize uploadProgressDelegate;
 @synthesize downloadProgressDelegate;
 @synthesize useKeychainPersistence;

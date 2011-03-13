@@ -101,6 +101,10 @@
 #endif
 }
 
+- (id)uploadProgressDelegate
+{
+	return uploadProgressDelegate;
+}
 
 - (void)setDownloadProgressDelegate:(id)newDelegate
 {
@@ -118,6 +122,11 @@
 		[invocation invokeWithTarget:[self downloadProgressDelegate]];
 	}
 #endif
+}
+
+- (id)downloadProgressDelegate
+{
+	return downloadProgressDelegate;
 }
 
 - (void)addHEADOperation:(NSOperation *)operation
@@ -356,7 +365,6 @@
 @synthesize bytesDownloadedSoFar;
 @synthesize totalBytesToDownload;
 @synthesize shouldCancelAllRequestsOnFailure;
-@synthesize uploadProgressDelegate;
 @synthesize downloadProgressDelegate;
 @synthesize requestDidStartSelector;
 @synthesize requestDidFinishSelector;
