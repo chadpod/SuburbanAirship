@@ -218,7 +218,7 @@ static NSString *SAJSONTokenAliasesKey = @"aliases";
 }
 
 
-#pragma Registration Methods
+#pragma mark Registration Methods
 - (void)putDeviceToken:(NSData *)token; {
 	[self putDeviceToken:token withDeviceAlias:nil withDeviceTags:nil];
 }
@@ -303,7 +303,7 @@ static NSString *SAJSONTokenAliasesKey = @"aliases";
 }
 
 
-#pragma Push Notifications Methods
+#pragma mark Push Notifications Methods
 - (NSString *)pushAlert:(NSString *)alert; {
 	return [self pushSuburbanAirshipNotification:[SuburbanAirshipNotification alert:alert sound:nil badge:nil date:nil alias:nil queued:NO]];
 }
@@ -397,7 +397,7 @@ static NSString *SAJSONTokenAliasesKey = @"aliases";
 }
 
 
-#pragma Delete Scheduled Push Notifications Methods
+#pragma mark Delete Scheduled Push Notifications Methods
 - (void)cancelAllNotifications; {
 	
 	if (self.deviceToken != nil && [self.deviceToken length] != 0) {
@@ -493,7 +493,7 @@ static NSString *SAJSONTokenAliasesKey = @"aliases";
 }
 
 
-#pragma Notifications Helper Method
+#pragma mark Notifications Helper Method
 - (void)sendNotificationsInQueue; {
 	
 	if (self.requestQueue != nil && [self.requestQueue count] != 0) {		
